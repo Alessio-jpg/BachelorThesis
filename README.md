@@ -14,7 +14,7 @@ Requirements
 * [Python3](https://www.python.org/downloads/),
 * [numpy](https://numpy.org/install/),
 * [scikit-image](https://scikit-image.org/docs/stable/install.html),
-* [bitstring](https://pypi.org/project/bitstring/),
+* [bitstring](https://pypi.org/project/bitstring/).
 
 Usage:
 ----------
@@ -32,5 +32,10 @@ Examples:
 
     python3 encoder.py "fingerprint.png" "compressed_fingerprint.wsq"
     python3 decoder.py -d "compressed_fingerprint.wsq" "decoded_fingeerprint.png"
+
+
+Test Images
+-------------
+The NIST image dataset useful for testing the WSQ specification can be found [here](https://www.nist.gov/programs-projects/wsq-certification-procedure).
 
 
