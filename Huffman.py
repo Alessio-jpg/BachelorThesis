@@ -34,8 +34,13 @@ class HuffTree(object):
         
         def explore_hufftree(node, depth = 0):
             if(not isinstance(node, self.HuffNode)):
-                bits[depth-1] += 1
-                huffval[depth-1].append(node)
+                if(depth-1<16):
+                    bits[depth-1] += 1
+                    huffval[depth-1].append(node)
+                else:
+                    print("è successo")
+                    bits[15] +=1
+                    huffval[15].append(node)
                 return
                 
             (left, right) = node.children()
@@ -166,8 +171,10 @@ class HuffmanCoding:
                         coded_data.append("0b" + huffdict[105])
                         coded_data.append(pack("uint:8", zero_run))
                     else:
-                        coded_data.append("0b" + huffdict[106])
-                        coded_data.append(pack("uint:16", zero_run))
+                        while(zero_run>0):
+                            coded_data.append("0b" + huffdict[106])
+                            coded_data.append(pack("uint:16", min(zero_run, 2**16-1)))
+                            zero_run -= 2**16-1
                 
                 zero_run=0
                 if(n>74):
@@ -176,14 +183,14 @@ class HuffmanCoding:
                         coded_data.append(pack("uint:8",n))
                     else:
                         coded_data.append("0b" + huffdict[103])
-                        coded_data.append(pack("uint:16",n))
+                        coded_data.append(pack("uint:16",min(65535,n)))
                 elif(n<-73):
                     if(n>-256):
                         coded_data.append("0b" + huffdict[102])
                         coded_data.append(pack("uint:8",-1 * n))
                     else:
                         coded_data.append("0b" + huffdict[104])
-                        coded_data.append(pack("uint:16",-1 * n))
+                        coded_data.append(pack("uint:16",min(65535,-1 * n)))
                 else:
                     coded_data.append("0b" + huffdict[n+180])
 
