@@ -16,7 +16,7 @@ Requirements
 * [scikit-image](https://scikit-image.org/docs/stable/install.html),
 * [bitstring](https://pypi.org/project/bitstring/).
 
-Usage:
+Usage
 ----------
 
 Encoding:
@@ -24,7 +24,7 @@ Encoding:
     python3 encoder.py [-d] <input> <output>
 Decoding:
 
-    python3 encoder.py [-d] <input> <output>
+    python3 decoder.py [-d] <input> <output>
 
 The option [-d] will print detailed informations during the entire encoding/decoding process
 

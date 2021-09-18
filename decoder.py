@@ -134,7 +134,12 @@ class WSQFileReader:
         
         subbands = iquantization(subbands, self.Q, self.Z, self.C)
         
-        self.img = np.uint8((getImageFromSubbandStructure(subbands) * self.R) + self.M)
+        img = (getImageFromSubbandStructure(subbands) * self.R) + self.M
+        
+        img[img>255] = 255
+        img[img<0] = 0
+        
+        self.img = np.uint8(img)
         
         return self
     
